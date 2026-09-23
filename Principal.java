@@ -39,7 +39,7 @@ public class Principal {
 
 
         // 3.3 – Imprimir todos os funcionários com todas suas informações
-        System.out.println("=== 3.3 - Lista de Funcionários ===");
+        System.out.println("\nLista de Funcionários: ");
         for (Funcionario func : funcionarios) {
             System.out.println(formatarFuncionario(func, dateFormatter, numberFormatter));
         }
@@ -58,7 +58,7 @@ public class Principal {
 
 
         // 3.6 – Imprimir os funcionários, agrupados por função
-        System.out.println("\n=== 3.6 - Funcionários Agrupados por Função ===");
+        System.out.println("\nFuncionários Agrupados por Função: ");
         funcionariosPorFuncao.forEach((funcao, lista) -> {
             System.out.println("Função: " + funcao);
             lista.forEach(f -> System.out.println("  - " + formatarFuncionario(f, dateFormatter, numberFormatter)));
@@ -67,7 +67,7 @@ public class Principal {
 
 
         // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12
-        System.out.println("\n=== 3.8 - Aniversariantes dos Meses 10 e 12 ===");
+        System.out.println("\nAniversariantes dos Meses 10 e 12: ");
         funcionarios.stream()
                 .filter(func -> {
                     int mes = func.getDataNascimento().getMonthValue();
@@ -79,7 +79,7 @@ public class Principal {
 
 
         // 3.9 – Imprimir o funcionário com a maior idade (nome e idade)
-        System.out.println("\n=== 3.9 - Funcionário com Maior Idade ===");
+        System.out.println("\nFuncionário com Maior Idade: ");
         if (!funcionarios.isEmpty()) {
             Funcionario maisVelho = Collections.min(funcionarios, Comparator.comparing(Pessoa::getDataNascimento));
             int idade = Period.between(maisVelho.getDataNascimento(), LocalDate.now()).getYears();
@@ -89,7 +89,7 @@ public class Principal {
 
    
         // 3.10 – Imprimir a lista de funcionários por ordem alfabética
-        System.out.println("\n=== 3.10 - Funcionários em Ordem Alfabética ===");
+        System.out.println("\nFuncionários em Ordem Alfabética: ");
         List<Funcionario> funcionariosOrdemAlfabetica = new ArrayList<>(funcionarios);
 
         funcionariosOrdemAlfabetica.sort(Comparator.comparing(Pessoa::getNome));
@@ -101,14 +101,14 @@ public class Principal {
 
 
         // 3.11 – Imprimir o total dos salários dos funcionários
-        System.out.println("\n=== 3.11 - Total dos Salários ===");
+        System.out.println("\nTotal dos Salários: ");
         BigDecimal totalSalarios = funcionarios.stream().map(Funcionario::getSalario).reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println("Total: R$ " + numberFormatter.format(totalSalarios));
 
 
 
         // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário
-        System.out.println("\n=== 3.12 - Quantidade de Salários Mínimos por Funcionário ===");
+        System.out.println("\nQuantidade de Salários Mínimos por Funcionário: ");
         BigDecimal salarioMinimo = new BigDecimal("1212.00");
 
         for (Funcionario func : funcionarios) {
